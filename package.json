@@ -15,6 +15,16 @@
     "cross-env": "^5.0.1",
     "express": "^4.15.3",
     "nuxt": "^1.4.0",
+    "prosemirror-commands": "^1.0.7",
+    "prosemirror-history": "^1.0.2",
+    "prosemirror-inputrules": "^1.0.1",
+    "prosemirror-keymap": "^1.0.1",
+    "prosemirror-model": "^1.4.1",
+    "prosemirror-schema-basic": "^1.0.0",
+    "prosemirror-schema-list": "^1.0.1",
+    "prosemirror-state": "^1.2.0",
+    "prosemirror-transform": "^1.0.9",
+    "prosemirror-view": "^1.2.0",
     "source-map-support": "^0.4.15"
   },
   "devDependencies": {
