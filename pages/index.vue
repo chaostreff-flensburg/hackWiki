@@ -12,16 +12,15 @@
 import { EditorView } from 'prosemirror-view';
 import { EditorState } from 'prosemirror-state';
 import { Schema, DOMParser } from 'prosemirror-model';
-import { schema } from 'prosemirror-schema-basic';
 import { addListNodes } from 'prosemirror-schema-list';
 import { keymap } from 'prosemirror-keymap';
 import { baseKeymap } from 'prosemirror-commands';
 import { history } from 'prosemirror-history';
 
+import { schema } from '~/components/editor/schema';
 import buildKeymap from '~/components/editor/keymap';
 import { buildInputRules } from '~/components/editor/inputrules';
 
-// @ToDo: Schema based on prosemirror-schema-basic, extend with own components
 const mySchema = new Schema({
   nodes: addListNodes(schema.spec.nodes, 'paragraph block*', 'block'),
   marks: schema.spec.marks,
