@@ -1,6 +1,6 @@
 pipeline:
   build:
-    image: blairguk/node-sass-alpine
+    image: node:latest
     commands:
       - npm install
       - npm run build
