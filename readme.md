@@ -17,9 +17,28 @@ $ npm start
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
-## Backpack
+## Frameworks
+
+This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
+Feathers has a powerful command line interface. Here are a few things it can do:
+
+```
+$ npm install -g @feathersjs/cli          # Install Feathers CLI
+
+$ feathers generate service               # Generate a new Service
+$ feathers generate hook                  # Generate a new Hook
+$ feathers generate model                 # Generate a new Model
+$ feathers help                           # Show all commands
+```
 
 We use [backpack](https://github.com/palmerhq/backpack) to watch and build the application, so you can use the latest ES6 features (module syntax, async/await, etc.).
 
 ---
 Made with ♡ at [Chaostreff Flensburg](https://twitter.com/chaos_fl) | [CI & CD](https://drone.ctfl.space/chaostreff-flensburg/hackWiki) | [License](./LICENSE)
+
+Merriweather, work sans, libre franklin
+https://material.io/design/material-studies/fortnightly.html#about-fortnightly
+
+bildung@lists.ccc.de
+
+hackerethik yoshi youtube
