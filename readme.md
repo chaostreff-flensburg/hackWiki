@@ -35,10 +35,3 @@ We use [backpack](https://github.com/palmerhq/backpack) to watch and build the a
 
 ---
 Made with ♡ at [Chaostreff Flensburg](https://twitter.com/chaos_fl) | [CI & CD](https://drone.ctfl.space/chaostreff-flensburg/hackWiki) | [License](./LICENSE)
-
-Merriweather, work sans, libre franklin
-https://material.io/design/material-studies/fortnightly.html#about-fortnightly
-
-bildung@lists.ccc.de
-
-hackerethik yoshi youtube
