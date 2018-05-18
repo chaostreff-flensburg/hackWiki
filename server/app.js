@@ -29,7 +29,9 @@ api.use(express.urlencoded({ extended: true }));
 
 // Set up Plugins and providers
 api.configure(express.rest());
-api.configure(socketio());
+api.configure(socketio({
+  path: '/ws/',
+}));
 
 // Configure other middleware (see `middleware/index.js`)
 api.configure(middleware);
@@ -44,7 +46,5 @@ api.use(express.notFound());
 api.use(express.errorHandler({ logger }));
 
 api.hooks(appHooks);
-
-api.setup();
 
 module.exports = api;

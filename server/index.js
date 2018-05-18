@@ -30,5 +30,7 @@ if (config.dev) {
 app.use(nuxt.render);
 
 // Listen the server
-app.listen(port, host);
+const server = app.listen(port, host);
+api.setup(server);
+
 console.log(`Server listening on ${host}:${port}`); // eslint-disable-line no-console
