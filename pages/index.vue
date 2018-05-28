@@ -1,16 +1,25 @@
 <template>
   <section>
-    <div id="content">
-      <h1>Lorem Ipsum</h1>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet rem aspernatur provident nulla autem ea perferendis quos iste veritatis quaerat, minus expedita animi eos explicabo dolore sequi voluptate totam quam!</p>
-    </div>
-    <div id="editor"></div>
+
+    <main id="editor"></main>
   </section>
 </template>
 
 <script>
+import Mobiledoc from 'mobiledoc-kit';
+
+function initEditor(store) {
+  const element = document.querySelector('#editor');
+  const options = { mobiledoc: store.state.docs.copy.doc };
+  const editor = new Mobiledoc.Editor(options);
+  editor.render(element);
+}
+
 export default {
   mounted() {},
+  mounted() {
+    initEditor(this.$store);
+  },
 };
 </script>
 
