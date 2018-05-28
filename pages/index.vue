@@ -1,5 +1,6 @@
 <template>
   <section>
+    <ssrLoader v-if="!isHydrated" :doc="$store.state.docs.copy.doc"></ssrLoader>
 
     <main id="editor"></main>
   </section>
@@ -14,11 +15,18 @@ function initEditor(store) {
   const editor = new Mobiledoc.Editor(options);
   editor.render(element);
 }
+import ssrLoader from '~/components/utils/ssr-loader.vue';
 
 export default {
-  mounted() {},
+  components: {
+    ssrLoader,
+  },
+  asyncData() {
+    return { isHydrated: false };
+  },
   mounted() {
     initEditor(this.$store);
+    this.isHydrated = true;
   },
 };
 </script>
