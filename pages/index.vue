@@ -2,30 +2,23 @@
   <section>
     <ssrLoader v-if="!isHydrated" :doc="$store.state.docs.copy.doc"></ssrLoader>
 
-    <main id="editor"></main>
+    <editor v-if="isHydrated" :doc="$store.state.docs.copy.doc"></editor>
   </section>
 </template>
 
 <script>
-import Mobiledoc from 'mobiledoc-kit';
-
-function initEditor(store) {
-  const element = document.querySelector('#editor');
-  const options = { mobiledoc: store.state.docs.copy.doc };
-  const editor = new Mobiledoc.Editor(options);
-  editor.render(element);
-}
 import ssrLoader from '~/components/utils/ssr-loader.vue';
+import editor from '~/components/editor/editor.vue';
 
 export default {
   components: {
     ssrLoader,
+    editor,
   },
   asyncData() {
     return { isHydrated: false };
   },
   mounted() {
-    initEditor(this.$store);
     this.isHydrated = true;
   },
 };
