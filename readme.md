@@ -15,7 +15,14 @@ $ npm build
 $ npm start
 ```
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+For now you can get mock data for development into the api by posting against the docs endpoint:
+
+```bash
+$ curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"doc":{"version":"0.3.1","atoms":[],"cards":[],"markups":[],"sections":[[1,"h1",[[0,[],0,"Lorem Ipsum"]]],[1,"p",[[0,[],0,"Lorem, ipsum dolor sit amet consectetur adipisicing elit."]]]]}}' \
+  http://localhost:3000/api/docs
+```
 
 ## Frameworks
 
@@ -32,6 +39,8 @@ $ feathers help                           # Show all commands
 ```
 
 We use [backpack](https://github.com/palmerhq/backpack) to watch and build the application, so you can use the latest ES6 features (module syntax, async/await, etc.).
+
+For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
 ---
 Made with ♡ at [Chaostreff Flensburg](https://twitter.com/chaos_fl) | [CI & CD](https://drone.ctfl.space/chaostreff-flensburg/hackWiki) | [License](./LICENSE)
