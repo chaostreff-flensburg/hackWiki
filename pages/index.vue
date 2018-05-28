@@ -15,6 +15,14 @@ export default {
     ssrLoader,
     editor,
   },
+  async fetch({ store }) {
+    // @ToDo: fetch page based on slug
+    let params = {query: {}}
+    await store.dispatch('docs/find', params)
+      .then(res => {
+        store.commit('docs/setCurrent', res.data[0]._id);
+      });
+  },
   asyncData() {
     return { isHydrated: false };
   },
