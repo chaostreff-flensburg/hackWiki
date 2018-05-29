@@ -4,13 +4,7 @@
 
 <script>
 import Mobiledoc from 'mobiledoc-kit';
-
-function initEditor(store) {
-  const element = document.querySelector('#editor');
-  const options = { mobiledoc: store.state.docs.copy.doc };
-  const editor = new Mobiledoc.Editor(options);
-  editor.render(element);
-}
+import debounce from 'lodash/debounce';
 
 export default {
 	props: {
@@ -20,7 +14,19 @@ export default {
 		},
 	},
 	mounted() {
-    initEditor(this.$store);
+		const element = document.querySelector('#editor');
+		const options = { mobiledoc: this.$store.state.docs.copy.doc };
+		const editor = new Mobiledoc.Editor(options);
+		editor.render(element);
+
+		editor.didUpdatePost(postEditor => {
+			this.docUpdated(editor.mobiledoc);
+		});
   },
+	methods: {
+		docUpdated: debounce(function(doc) {
+			this.$emit('docUpdated', doc);
+		}, 300),
+	}
 }
 </script>

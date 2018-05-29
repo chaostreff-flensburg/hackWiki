@@ -30,6 +30,7 @@
     "feathers-nedb": "^2.7.0",
     "feathers-vuex": "^1.4.2",
     "helmet": "^3.12.1",
+    "lodash": "^4.17.10",
     "mobiledoc-kit": "^0.10.21",
     "mobiledoc-vdom-renderer": "^0.1.1",
     "nedb": "^1.8.0",
