@@ -20,7 +20,7 @@ export default {
 		editor.render(element);
 
 		editor.didUpdatePost(postEditor => {
-			this.docUpdated(editor.mobiledoc);
+			this.docUpdated(editor.serialize());
 		});
   },
 	methods: {
