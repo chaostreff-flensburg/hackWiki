@@ -2,7 +2,9 @@
   <section>
     <ssrLoader v-if="!isHydrated" :doc="$store.state.docs.copy.doc"></ssrLoader>
 
-    <editor v-if="isHydrated" :doc="$store.state.docs.copy.doc"></editor>
+    <editor v-if="isHydrated" :doc="$store.state.docs.copy.doc" 
+      @docUpdated="updateState($event)">
+    </editor>
   </section>
 </template>
 
@@ -28,6 +30,11 @@ export default {
   },
   mounted() {
     this.isHydrated = true;
+  },
+  methods: {
+    updateState(newDoc) {
+      this.$store.state.docs.copy.doc = { ...this.$store.state.docs.copy.doc, ...newDoc};
+    },
   },
 };
 </script>
