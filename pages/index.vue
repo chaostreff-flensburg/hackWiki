@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     updateState(newDoc) {
-      this.page.doc = { ...this.page.doc, ...newDoc};
+      this.page.doc = { ...newDoc };
     },
   },
 };
