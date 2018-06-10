@@ -1,8 +1,8 @@
 <template>
   <section>
-    <ssrLoader v-if="!isHydrated" :doc="$store.state.docs.copy.doc"></ssrLoader>
+    <ssrLoader v-if="!isHydrated" :doc="page.doc"></ssrLoader>
 
-    <editor v-if="isHydrated" :doc="$store.state.docs.copy.doc" 
+    <editor v-if="isHydrated" :doc="page.doc" 
       @docUpdated="updateState($event)">
     </editor>
   </section>
@@ -17,23 +17,23 @@ export default {
     ssrLoader,
     editor,
   },
-  async fetch({ store }) {
+  async asyncData({ app }) {
     // @ToDo: fetch page based on slug
-    let params = {query: {}}
-    await store.dispatch('docs/find', params)
+    let page = await app.$axios.$get('/api/docs?[$limit]=1')
       .then(res => {
-        store.commit('docs/setCurrent', res.data[0]._id);
-      });
-  },
-  asyncData() {
-    return { isHydrated: false };
+        return res.data[0];
+      })
+    return { 
+      page,
+      isHydrated: false,
+    };
   },
   mounted() {
     this.isHydrated = true;
   },
   methods: {
     updateState(newDoc) {
-      this.$store.state.docs.copy.doc = { ...this.$store.state.docs.copy.doc, ...newDoc};
+      this.page.doc = { ...this.page.doc, ...newDoc};
     },
   },
 };

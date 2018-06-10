@@ -19,4 +19,5 @@ module.exports = {
   ** Global CSS
   */
   css: ['~/assets/styles/main.scss'],
+  modules: ['@nuxtjs/axios'],
 };

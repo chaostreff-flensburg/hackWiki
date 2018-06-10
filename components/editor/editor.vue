@@ -15,7 +15,7 @@ export default {
 	},
 	mounted() {
 		const element = document.querySelector('#editor');
-		const options = { mobiledoc: this.$store.state.docs.copy.doc };
+		const options = { mobiledoc: this.doc };
 		const editor = new Mobiledoc.Editor(options);
 		editor.render(element);
 
