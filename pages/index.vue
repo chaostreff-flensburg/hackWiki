@@ -5,6 +5,7 @@
     <editor v-if="isHydrated" :doc="page.doc" 
       @docUpdated="updateState($event)">
     </editor>
+    <button @click="saveDoc()">save</button>
   </section>
 </template>
 
@@ -34,6 +35,9 @@ export default {
   methods: {
     updateState(newDoc) {
       this.page.doc = { ...newDoc };
+    },
+    saveDoc() {
+      this.$axios.$patch(`/api/docs/${this.page._id}`, this.page);
     },
   },
 };
