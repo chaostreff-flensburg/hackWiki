@@ -10,7 +10,7 @@ export default {
 	},
 	render(h) {
 		const render = Renderer({ createElement: h });
-		return <main>{ render(this.doc) }</main>;
+		return <article>{ render(this.doc) }</article>;
 	},
 }
 </script>

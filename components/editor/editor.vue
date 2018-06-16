@@ -1,5 +1,5 @@
 <template>
-	<main id="editor"></main>
+	<article id="editor"></article>
 </template>
 
 <script>
