@@ -1,22 +1,23 @@
 <template>
   <section>
-    <ssrLoader v-if="!isHydrated" :doc="page.doc"></ssrLoader>
 
-    <editor v-if="isHydrated" :doc="page.doc" 
-      @docUpdated="updateState($event)">
-    </editor>
+    <component :is="docMode"
+      :doc="page.doc"
+      @docUpdated="updateState($event)"
+    ></component>
+
     <button @click="saveDoc()">save</button>
+    <button @click="mode = 'editor'">edit</button>
   </section>
 </template>
 
 <script>
 import ssrLoader from '~/components/utils/ssr-loader.vue';
-import editor from '~/components/editor/editor.vue';
 
 export default {
   components: {
     ssrLoader,
-    editor,
+    editor: () => import('~/components/editor/editor.vue' /* webpackChunkName: "components/editor" */),
   },
   async asyncData({ app }) {
     // @ToDo: fetch page based on slug
@@ -26,11 +27,8 @@ export default {
       })
     return { 
       page,
-      isHydrated: false,
+      mode: 'ssrLoader',
     };
-  },
-  mounted() {
-    this.isHydrated = true;
   },
   methods: {
     updateState(newDoc) {
@@ -40,12 +38,19 @@ export default {
       this.$axios.$patch(`/api/docs/${this.page._id}`, this.page);
     },
   },
+  computed: {
+    docMode() {
+      return this.mode;
+    }
+  },
 };
 </script>
 
 <style scoped>
 section {
   max-width: 720px;
+
+  margin-top: 24px;
   margin-left: auto;
   margin-right: auto;
 }
