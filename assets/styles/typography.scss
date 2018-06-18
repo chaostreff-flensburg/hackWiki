@@ -60,11 +60,11 @@ p {
   line-height: 1.58;
 }
 
-em {
+em, i {
   font-style: italic;
 }
 
-strong {
+strong, b {
   font-weight: 900;
 }
 
@@ -74,17 +74,8 @@ a {
   color: inherit;
 }
 
-i, span {
+span {
   color: $fontcolor-light;
-}
-
-i {
-  margin-right: 2px;
-  margin-left: 2px;
-
-  vertical-align: middle;
-
-  font-size: 18px;
 }
 
 span {
