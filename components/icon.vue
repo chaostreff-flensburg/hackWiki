@@ -23,7 +23,7 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style scoped>
 svg {
 	width: 24px;
   height: 24px;
