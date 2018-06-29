@@ -1,10 +1,5 @@
-# Nuxt build
-.nuxt
 
-# Nuxt generate
-dist
-
-# Backpack build
+# Build
 build
 
 # Logs
