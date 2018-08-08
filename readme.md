@@ -28,15 +28,6 @@ $ npm build
 $ npm start
 ```
 
-For now you can get mock data for development into the api by posting against the docs endpoint:
-
-```bash
-$ curl --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"page": {"document": {"nodes": [{"object": "block","type": "paragraph","nodes": [{"object": "text","leaves": [{"text": ""}]}]}]}}}' \
-  http://localhost:3000/api/docs
-```
-
 ### Code Style
 This project uses [Prettier](https://prettier.io) to format code. Prettier should be run before creating a pull request. You can run it with the default settings from your editor. For more information, refer to the [official documentation](https://prettier.io).
 
