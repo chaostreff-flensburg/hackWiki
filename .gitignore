@@ -1,11 +1,7 @@
-# Nuxt build
-.nuxt
 
-# Nuxt generate
-dist
-
-# Backpack build
+# Build
 build
+.next
 
 # Logs
 logs
@@ -113,5 +109,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # Others
-lib/
 data/
+xd/

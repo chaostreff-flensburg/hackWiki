@@ -1,7 +1,7 @@
-import express from 'express';
-import { Nuxt, Builder } from 'nuxt';
+const express = require('express');
+const next = require('next');
 
-import api from './app';
+const api = require('./app');
 
 const app = express();
 const host = process.env.HOST || '127.0.0.1';
@@ -12,25 +12,19 @@ app.set('port', port);
 // Import API Routes
 app.use('/api', api);
 
-// Import and Set Nuxt.js options
-const config = require('../nuxt.config.js');
+const dev = process.env.NODE_ENV !== 'production'
+const nextApp = next({ dev })
+const handle = nextApp.getRequestHandler()
 
-config.dev = !(process.env.NODE_ENV === 'production');
+nextApp.prepare()
+  .then(() => {
+    app.get('*', (req, res) => {
+      return handle(req, res)
+    })
 
-// Init Nuxt.js
-const nuxt = new Nuxt(config);
+    // Listen the server
+    const server = app.listen(port, host);
+    api.setup(server);
 
-// Build only in dev mode
-if (config.dev) {
-  const builder = new Builder(nuxt);
-  builder.build();
-}
-
-// Give nuxt middleware to express
-app.use(nuxt.render);
-
-// Listen the server
-const server = app.listen(port, host);
-api.setup(server);
-
-console.log(`Server listening on ${host}:${port}`); // eslint-disable-line no-console
+    console.log(`Server listening on ${host}:${port}`); // eslint-disable-line no-console
+  })

@@ -1,7 +1,20 @@
 # hackWiki
 ![build status](https://drone.ctfl.space/api/badges/chaostreff-flensburg/hackWiki/status.svg)
 
-## Build Setup
+<!-- @TDOD: Inline About Section -->
+
+## Deployment
+
+### As a node.js Project
+Clone the repo and follow the build instructions under [Build Setup](#Build\ Setup).   
+A node.js version of `10.4` or higher is needed. Older versions may work, but are not tested.
+
+#### Data Migration
+Older document or user databases can be migrated by simply copying the `*.db` files from the `./data` directory.
+
+## Development
+
+### Build Setup
 
 ``` bash
 # install dependencies
@@ -20,12 +33,16 @@ For now you can get mock data for development into the api by posting against th
 ```bash
 $ curl --header "Content-Type: application/json" \
   --request POST \
-  --data '{"doc":{"version":"0.3.1","atoms":[],"cards":[],"markups":[],"sections":[[1,"h1",[[0,[],0,"Lorem Ipsum"]]],[1,"p",[[0,[],0,"Lorem, ipsum dolor sit amet consectetur adipisicing elit."]]]]}}' \
+  --data '{"page": {"document": {"nodes": [{"object": "block","type": "paragraph","nodes": [{"object": "text","leaves": [{"text": ""}]}]}]}}}' \
   http://localhost:3000/api/docs
 ```
 
-## Frameworks
+### Code Style
+This project uses [Prettier](https://prettier.io) to format code. Prettier should be run before creating a pull request. You can run it with the default settings from your editor. For more information, refer to the [official documentation](https://prettier.io).
 
+### Frameworks
+
+#### Feathers.js
 This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
 Feathers has a powerful command line interface. Here are a few things it can do:
 
@@ -38,9 +55,8 @@ $ feathers generate model                 # Generate a new Model
 $ feathers help                           # Show all commands
 ```
 
-We use [backpack](https://github.com/palmerhq/backpack) to watch and build the application, so you can use the latest ES6 features (module syntax, async/await, etc.).
-
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+#### Next.js
+For detailed explanation on how things work, checkout the [Next.js docs](https://nextjs.org/).
 
 ---
 Made with ♡ at [Chaostreff Flensburg](https://twitter.com/chaos_fl) | [CI & CD](https://drone.ctfl.space/chaostreff-flensburg/hackWiki) | [License](./LICENSE)
