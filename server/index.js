@@ -1,6 +1,7 @@
-import express from 'express';
+const express = require('express');
+const next = require('next');
 
-import api from './app';
+const api = require('./app');
 
 const app = express();
 const host = process.env.HOST || '127.0.0.1';
@@ -11,8 +12,19 @@ app.set('port', port);
 // Import API Routes
 app.use('/api', api);
 
-// Listen the server
-const server = app.listen(port, host);
-api.setup(server);
+const dev = process.env.NODE_ENV !== 'production'
+const nextApp = next({ dev })
+const handle = nextApp.getRequestHandler()
 
-console.log(`Server listening on ${host}:${port}`); // eslint-disable-line no-console
+nextApp.prepare()
+  .then(() => {
+    app.get('*', (req, res) => {
+      return handle(req, res)
+    })
+
+    // Listen the server
+    const server = app.listen(port, host);
+    api.setup(server);
+
+    console.log(`Server listening on ${host}:${port}`); // eslint-disable-line no-console
+  })
