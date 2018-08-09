@@ -12,7 +12,7 @@ export default [
     trigger: "space",
     before: /^(>)$/,
     transform: (transform, e, matches) => {
-      return transform.setBlocks({ type: "blockqoute" });
+      return transform.setBlocks({ type: "blockquote" });
     }
   }),
   AutoReplace({

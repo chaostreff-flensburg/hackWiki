@@ -6,7 +6,7 @@ function HeadingNode(props) {
   return <h1 {...props.attributes}>{props.children}</h1>;
 }
 
-function BlockqouteNode(props) {
+function BlockquoteNode(props) {
   return <blockquote {...props.attributes}>{props.children}</blockquote>;
 }
 
@@ -27,8 +27,8 @@ export default function RenderNode() {
           return <ParagraphNode {...props} />;
         case "heading":
           return <HeadingNode {...props} />;
-        case "blockqoute":
-          return <BlockqouteNode {...props} />;
+        case "blockquote":
+          return <BlockquoteNode {...props} />;
         case "code":
           return <CodeNode {...props} />;
       }
