@@ -7,6 +7,7 @@ import RenderNode from "./RenderNode";
 import RenderMark from "./RenderMark";
 import MarkHotkey from "./MarkHotkey";
 import MarkdownShortcuts from "./MarkdownShortcuts";
+import PreventNodeExtension from './PreventNodeExtension'
 
 import EmptyDocument from "./templates/EmptyDocument";
 
@@ -18,6 +19,7 @@ const plugins = [
   MarkHotkey({ key: "mod+i", type: "italic" }),
   MarkHotkey({ key: "mod+s", type: "strikethrough" }),
   MarkHotkey({ key: "mod+u", type: "underline" }),
+  PreventNodeExtension(),
   ...MarkdownShortcuts
 ];
 
