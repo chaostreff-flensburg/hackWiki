@@ -6,7 +6,7 @@
 ## Deployment
 
 ### As a node.js Project
-Clone the repo and follow the build instructions under [Build Setup](#Build\ Setup).   
+Clone the repo and follow the build instructions under [Build Setup](#build-setup).   
 A node.js version of `10.4` or higher is needed. Older versions may work, but are not tested.
 
 #### Data Migration
