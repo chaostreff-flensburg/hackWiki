@@ -4,7 +4,3 @@ pipeline:
     commands:
       - npm install
       - npm run build
-  publish:
-    image: plugins/docker
-    repo: ctfl/hack-wiki
-    tags: [0.1.0, latest]
