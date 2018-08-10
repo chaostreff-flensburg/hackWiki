@@ -28,6 +28,8 @@ If the same host volume is used, the data will be persisted automatically.
 
 ## Development
 
+Pushing to master is restricted. Please work in a `feature/` or `bug/` branch and create a pull request. Merging requires the CI passing, an approved review and the branch being up to date.
+
 ### Build Setup
 
 ```bash
