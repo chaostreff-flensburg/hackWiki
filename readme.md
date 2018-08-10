@@ -2,7 +2,7 @@
 
 ![build status](https://drone.ctfl.space/api/badges/chaostreff-flensburg/hackWiki/status.svg)
 
-<!-- @TDOD: Inline About Section -->
+<!-- @ToDo: Inline About Section -->
 
 ## Deployment
 
@@ -11,16 +11,17 @@
 Clone the repo and follow the build instructions under [Build Setup](#build-setup).  
 A node.js version of `10.4` or higher is needed. Older versions may work, but are not tested.
 
-#### Data Migration
-
-Older document or user databases can be migrated by simply copying the `*.db` files from the `./data` directory.
-
+<!-- @ToDo: add docker deployment when images are being built and published by ci
 ### Docker
 
 ```bash
-$ docker build -t ctfl/hack-wiki .
-$ docker run -d --name hack-wiki -p 8080:80 -v /srv/hack-wiki/data:/app/data ctfl/hack-wiki
+$ docker run -d --name hackwiki -p 8080:80 -v /srv/hack-wiki/data:/app/data ctfl/hackwiki
 ```
+-->
+
+#### Data Migration
+
+Older document or user databases can be migrated by simply copying the `*.db` files from the `./data` directory.
 
 #### Data Migration
 
