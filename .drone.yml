@@ -1,6 +1,6 @@
 pipeline:
   build:
-    image: node:latest
+    image: node:10.8-alpine
     commands:
       - npm install
       - npm run build
