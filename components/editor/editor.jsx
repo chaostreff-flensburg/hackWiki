@@ -36,6 +36,16 @@ export default class WikiEditor extends React.Component {
     };
   }
 
+  componentDidUpdate = prevProps => {
+    // update editor on changing props
+    if (this.props != prevProps) {
+      let pageData = Value.fromJSON(this.props.doc.page || EmptyDocument);
+      this.setState(prevState => {
+        return { ...this.props.doc, page: pageData };
+      });
+    }
+  };
+
   onSave = () => {
     if (this.state._id) {
       axios.put(`/api/docs/${this.state._id}`, this.state).then(res => {
