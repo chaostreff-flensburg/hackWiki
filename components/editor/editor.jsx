@@ -7,7 +7,7 @@ import RenderNode from "./RenderNode";
 import RenderMark from "./RenderMark";
 import MarkHotkey from "./MarkHotkey";
 import MarkdownShortcuts from "./MarkdownShortcuts";
-import PreventNodeExtension from './PreventNodeExtension'
+import PreventNodeExtension from "./PreventNodeExtension";
 
 import EmptyDocument from "./templates/EmptyDocument";
 
@@ -47,6 +47,7 @@ export default class WikiEditor extends React.Component {
   };
 
   onSave = () => {
+    // @ToDo: move saving into context
     if (this.state._id) {
       axios.put(`/api/docs/${this.state._id}`, this.state).then(res => {
         // @ToDo: replace editor state
