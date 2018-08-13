@@ -7,7 +7,7 @@ import RenderNode from "./RenderNode";
 import RenderMark from "./RenderMark";
 import MarkHotkey from "./MarkHotkey";
 import MarkdownShortcuts from "./MarkdownShortcuts";
-import PreventNodeExtension from './PreventNodeExtension'
+import PreventNodeExtension from "./PreventNodeExtension";
 
 import EmptyDocument from "./templates/EmptyDocument";
 
@@ -36,7 +36,18 @@ export default class WikiEditor extends React.Component {
     };
   }
 
+  componentDidUpdate = prevProps => {
+    // update editor on changing props
+    if (this.props != prevProps) {
+      let pageData = Value.fromJSON(this.props.doc.page || EmptyDocument);
+      this.setState(prevState => {
+        return { ...this.props.doc, page: pageData };
+      });
+    }
+  };
+
   onSave = () => {
+    // @ToDo: move saving into context
     if (this.state._id) {
       axios.put(`/api/docs/${this.state._id}`, this.state).then(res => {
         // @ToDo: replace editor state
@@ -52,12 +63,6 @@ export default class WikiEditor extends React.Component {
     }
   };
 
-  onMetaDataChange = metaDelta => {
-    this.setState(prevState => {
-      return { ...metaDelta };
-    });
-  };
-
   onEditorChange = ({ value }) => {
     this.setState({ page: value });
   };
@@ -70,18 +75,6 @@ export default class WikiEditor extends React.Component {
           plugins={plugins}
           value={this.state.page}
           onChange={this.onEditorChange}
-        />
-        <input
-          type="text"
-          placeholder="slug"
-          value={this.state.slug}
-          onChange={e => this.onMetaDataChange({ slug: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="name"
-          value={this.state.name}
-          onChange={e => this.onMetaDataChange({ name: e.target.value })}
         />
         <button onClick={this.onSave}>save</button>
       </React.Fragment>
