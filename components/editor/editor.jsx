@@ -15,9 +15,9 @@ const plugins = [
   RenderNode(),
   RenderMark(),
   MarkHotkey({ key: "mod+b", type: "bold" }),
-  MarkHotkey({ key: "mod+c", type: "code" }),
+  MarkHotkey({ key: "mod+e", type: "code" }),
   MarkHotkey({ key: "mod+i", type: "italic" }),
-  MarkHotkey({ key: "mod+s", type: "strikethrough" }),
+  MarkHotkey({ key: "shift+mod+s", type: "strikethrough" }),
   MarkHotkey({ key: "mod+u", type: "underline" }),
   PreventNodeExtension(),
   ...MarkdownShortcuts
