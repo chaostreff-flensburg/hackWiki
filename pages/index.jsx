@@ -1,12 +1,16 @@
 import React from "react";
+import { withRouter } from "next/router";
 import axios from "../lib/axios";
 
 import WikiEditor from "../components/editor/editor";
 
-export default class Page extends React.Component {
-  static async getInitialProps({ req }) {
-    // @ToDo: fetch page based on slug
-    let res = await axios.get("/api/docs?$limit=1");
+class Page extends React.Component {
+  static async getInitialProps({ req, asPath }) {
+    let res = await axios.get("/api/docs", {
+      params: {
+        "router.asPath": asPath
+      }
+    });
     return { ...res.data.data[0] };
   }
 
@@ -29,3 +33,5 @@ export default class Page extends React.Component {
     );
   }
 }
+
+export default withRouter(Page);
