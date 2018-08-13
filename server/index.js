@@ -19,7 +19,7 @@ const handle = nextApp.getRequestHandler()
 nextApp.prepare()
   .then(() => {
     app.get('*', (req, res) => {
-      return handle(req, res)
+      return nextApp.render(req, res, '/', req.query);
     })
 
     // Listen the server
