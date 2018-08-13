@@ -52,12 +52,6 @@ export default class WikiEditor extends React.Component {
     }
   };
 
-  onMetaDataChange = metaDelta => {
-    this.setState(prevState => {
-      return { ...metaDelta };
-    });
-  };
-
   onEditorChange = ({ value }) => {
     this.setState({ page: value });
   };
@@ -70,18 +64,6 @@ export default class WikiEditor extends React.Component {
           plugins={plugins}
           value={this.state.page}
           onChange={this.onEditorChange}
-        />
-        <input
-          type="text"
-          placeholder="slug"
-          value={this.state.slug}
-          onChange={e => this.onMetaDataChange({ slug: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="name"
-          value={this.state.name}
-          onChange={e => this.onMetaDataChange({ name: e.target.value })}
         />
         <button onClick={this.onSave}>save</button>
       </React.Fragment>
