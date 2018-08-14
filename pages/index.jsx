@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "next/router";
 import axios from "../lib/axios";
 
+import Layout from "../layouts/layout";
 import WikiEditor from "../components/editor/editor";
 
 class Page extends React.Component {
@@ -17,18 +18,11 @@ class Page extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <article>
-          <WikiEditor doc={this.props} />
-        </article>
-        <style jsx>{`
-          article {
-            max-width: 720px;
-
-            margin-top: 24px;
-            margin-left: auto;
-            margin-right: auto;
-          }
-        `}</style>
+        <Layout layout={this.props.layout}>
+          <article>
+            <WikiEditor doc={this.props} />
+          </article>
+        </Layout>
       </React.Fragment>
     );
   }
