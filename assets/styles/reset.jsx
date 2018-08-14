@@ -15,7 +15,7 @@ export default function() {
       h4,
       h5,
       h6 {
-        font-weight: normal;
+        font-weight: bold;
       }
 
       table {
