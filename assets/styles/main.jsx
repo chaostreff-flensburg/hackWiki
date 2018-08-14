@@ -5,7 +5,6 @@ export default function() {
       body {
         background-color: #fff;
         letter-spacing: 0.5px;
-        height: 100vh;
         margin: 0;
       }
 
