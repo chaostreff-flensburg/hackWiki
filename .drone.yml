@@ -8,4 +8,5 @@ pipeline:
   test:
     image: cypress/base:10
     commands:
+      - npm run cy:install
       - npm run ci
