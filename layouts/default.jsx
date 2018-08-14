@@ -2,7 +2,7 @@ import React from "react";
 
 import DefaultTypography from "./default/typography";
 
-export default class DeafultLayout extends React.Component {
+export default class DefaultLayout extends React.Component {
   render() {
     return (
       <React.Fragment>
