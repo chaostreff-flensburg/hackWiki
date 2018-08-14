@@ -22,6 +22,8 @@ export default function() {
       h4,
       h5,
       h6 {
+        margin: 4px 0;
+
         font-family: "Lato", sans-serif;
         font-weight: 900;
       }
